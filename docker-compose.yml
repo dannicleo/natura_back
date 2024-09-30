@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  nest_api_natura:
+    container_name: nest_api_natura
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgresdb_natura
+    env_file:
+      - .env
+
+  postgresdb_natura:
+    image: postgres:13
+    container_name: postgresdb_natura
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    name: postgresdb_natura

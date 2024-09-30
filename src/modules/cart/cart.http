@@ -1,0 +1,15 @@
+
+POST http://localhost:3000/cart HTTP/1.1
+Content-Type: application/json
+
+{
+    "address": {
+        "zip_code": ""
+    },
+    "clientId": "",
+    "coupon": [],
+    "products": [
+        { "id": "275f09e7-f4fb-4c85-8f75-dea104f6e3f4", "quantity": 2  }
+        { "id": "2ac3ec98-46f3-4436-8a8f-b97ba2a7705b", "quantity": 1  }
+    ]
+}
