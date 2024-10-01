@@ -10,13 +10,14 @@ exports.CartModule = void 0;
 const common_1 = require("@nestjs/common");
 const cart_service_1 = require("./cart.service");
 const cart_controller_1 = require("./cart.controller");
+const PrismaService_1 = require("../../common/database/PrismaService");
 let CartModule = class CartModule {
 };
 exports.CartModule = CartModule;
 exports.CartModule = CartModule = __decorate([
     (0, common_1.Module)({
         controllers: [cart_controller_1.CartController],
-        providers: [cart_service_1.CartService],
+        providers: [cart_service_1.CartService, PrismaService_1.PrismaService],
     })
 ], CartModule);
 //# sourceMappingURL=cart.module.js.map

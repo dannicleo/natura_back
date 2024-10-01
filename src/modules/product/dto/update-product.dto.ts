@@ -8,5 +8,4 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
     @IsUUID()
     id: string;
 
-
 }
