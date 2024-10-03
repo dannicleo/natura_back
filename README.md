@@ -57,6 +57,27 @@ Siga os passos abaixo para configurar o projeto localmente:
   $ npm install
 ```
 
+## Preparing enviroment variables
+
+Create a .env
+
+POSTGRES_HOST=postgresdb_natura
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=12345678
+POSTGRES_NAME=naturadb
+POSTGRES_PORT=5432
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_NAME}
+
+Create a .env.development
+
+POSTGRES_HOST=localhost
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=12345678
+POSTGRES_NAME=naturadb
+POSTGRES_PORT=5432
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_NAME}
+
+
 ## Preparing the app
 
 ```bash
@@ -65,7 +86,6 @@ $ npm run migrate:dev
 
 # seed database
 $ npm run seed:dev
-
 ```
 
 ## Running the app
@@ -98,4 +118,3 @@ $ docker-compose -f "docker-compose.dev.yml" up -d
 ```
 
 OBS: É preciso popular o banco de dados dentro do container. Um script de seed está contido no package.json
-
