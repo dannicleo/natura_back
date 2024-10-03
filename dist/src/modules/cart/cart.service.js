@@ -24,10 +24,10 @@ let CartService = class CartService {
     async getCart(cart) {
         const { clientId, address, products, coupon } = cart;
         const productsWithQuantityAndTotal = await this.getProductsWithQuantity(products);
-        const totalProducts = await this.getTotalProducts(productsWithQuantityAndTotal);
+        const totalProducts = this.getTotalProducts(productsWithQuantityAndTotal);
         const couponValue = this.checkCoupon(coupon[0]);
         const shippingValue = address.zip_code ? this.getFakeShippingValue(address.zip_code) : 0;
-        const totalCart = couponValue + shippingValue + totalProducts;
+        const totalCart = shippingValue + totalProducts - couponValue;
         return {
             ...cart,
             products: productsWithQuantityAndTotal,

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CartDto } from './dto/cart.dto';
-import { PrismaService } from 'src/common/database/PrismaService';
+import { PrismaService } from '../../common/database/PrismaService';
 import Decimal from 'decimal.js';
 
 type Product = {
@@ -32,10 +32,10 @@ export class CartService {
   async getCart(cart: CartDto) {
     const { clientId, address, products, coupon } = cart
     const productsWithQuantityAndTotal = await this.getProductsWithQuantity(products)       //junta dados da lista de produtos do front junto com a lista de produtos do banco
-    const totalProducts = await this.getTotalProducts(productsWithQuantityAndTotal)         //calcula o valor total dos produtos   
+    const totalProducts = this.getTotalProducts(productsWithQuantityAndTotal)         //calcula o valor total dos produtos   
     const couponValue = this.checkCoupon(coupon[0])                                         //aplica
     const shippingValue = address.zip_code? this.getFakeShippingValue(address.zip_code):0   //busca frete de uma funÇão falsa
-    const totalCart = couponValue + shippingValue + totalProducts
+    const totalCart = shippingValue + totalProducts - couponValue
     return {
         ...cart,
         products: productsWithQuantityAndTotal,

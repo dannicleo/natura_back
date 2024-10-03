@@ -1,5 +1,5 @@
 import { CartDto } from './dto/cart.dto';
-import { PrismaService } from 'src/common/database/PrismaService';
+import { PrismaService } from '../../common/database/PrismaService';
 import Decimal from 'decimal.js';
 type Product = {
     productIdView: string;

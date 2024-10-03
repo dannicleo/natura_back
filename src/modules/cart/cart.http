@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "address": {
-        "zip_code": ""
+        "zip_code": "57073470"
     },
     "clientId": "",
     "coupon": [],
